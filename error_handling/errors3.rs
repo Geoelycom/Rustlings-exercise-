@@ -11,7 +11,8 @@ fn main() -> Result<(), ParseIntError>  {
     let mut tokens = 100;
     let pretend_user_input = "8";
 
-    let cost = total_cost(pretend_user_input)?;
+    let cost = total_cost(pretend_user_input)?; // error propagates to caller
+    // else result is saved in cost and if/else block will execute
 
     if cost > tokens {
         println!("You can't afford that many!");
