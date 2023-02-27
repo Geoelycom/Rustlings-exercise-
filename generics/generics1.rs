@@ -7,7 +7,6 @@
 // T is located and used from the std::cmp::PartialOrd
 
 // Monomorphization(Turning generic code into specifics code by filling the concrete type use at compile time)
-// I AM NOT DONE
 
 fn main() {
     let mut shopping_list: Vec<&str> = Vec::new();
