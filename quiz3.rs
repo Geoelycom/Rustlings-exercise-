@@ -15,7 +15,7 @@
 // Execute `rustlings hint quiz3` or use the `hint` watch subcommand for a hint.
 
 // I AM NOT DONE
-
+// Implement on a new thread
 pub struct ReportCard {
     pub grade: f32,
     pub student_name: String,
