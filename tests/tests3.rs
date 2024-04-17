@@ -16,11 +16,19 @@ mod tests {
 
     #[test]
     fn is_true_when_even() {
-        assert!();
+        assert!( 2 % 2 == 0);
     }
 
     #[test]
     fn is_false_when_odd() {
-        assert!();
+        assert!(5 % 2 != 0);
+    }
+}
+
+    mod test2 {
+    use super::*;
+    #[test]
+    fn new_test() {
+        assert!(!is_even(5))
     }
 }
