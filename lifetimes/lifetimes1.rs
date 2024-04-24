@@ -1,5 +1,5 @@
 // lifetimes1.rs
-//
+// These are also generics that we can use in place of actual generics : Readmore
 // The Rust compiler needs to know how to check whether supplied references are
 // valid, so that it can let the programmer know if a reference is at risk
 // of going out of scope before it is used. Remember, references are borrows
