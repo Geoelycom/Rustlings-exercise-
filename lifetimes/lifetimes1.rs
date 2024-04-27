@@ -7,9 +7,12 @@
 //
 // Execute `rustlings hint lifetimes1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// let hello_world = "Hello, World!";(which is a string slice/string literal here)
+    // [&str]
+// literal string.( 'hello', 'john', 'book', 'kiss', 'tell' etc)
+// a string slice is a reference to a string literal or a portion to a string literal/ of another string slice.
 
-fn longest(x: &str, y: &str) -> &str {
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
     } else {
