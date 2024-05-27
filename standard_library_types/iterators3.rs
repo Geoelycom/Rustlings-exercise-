@@ -40,16 +40,32 @@ pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
 // Desired output: Ok([1, 11, 1426, 3])
 fn result_with_list() -> Result<Vec<i32>, String> {
     let numbers = vec![27, 297, 38502, 81];
-    let division_results = numbers.into_iter().map(|n| divide(n, 27))
-    .collect();
+    let division_results: Result<Vec<i32>, String> = numbers.into_iter()
+        .map(|n| divide(n, 27))
+        .collect::<Result<Vec<_>, _>>()
+        .map_err(|e| {
+            match e {
+                DivisionError::DivideByZero => "Division by zero occurred".to_string(),
+                DivisionError::NotDivisible(err) => format!("Not divisible: {} is not divisible by {}", err.dividend, err.divisor),
+            }
+        });
     division_results
 }
-
 // Complete the function and return a value of the correct type so the test passes.
 // Desired output: [Ok(1), Ok(11), Ok(1426), Ok(3)]
-fn list_of_results() -> () {
+fn list_of_results() -> Vec<Result<i32, String>> {
     let numbers = vec![27, 297, 38502, 81];
-    let division_results = numbers.into_iter().map(|n| divide(n, 27));
+    let division_results: Vec<Result<i32, String>> = numbers.into_iter()
+        .map(|n| divide(n, 27))
+        .map(|result| match result {
+            Ok(num) => Ok(num),
+            Err(e) => match e {
+                DivisionError::DivideByZero => Err("Division by zero".to_string()),
+                DivisionError::NotDivisible(err) => Err(format!("Not divisible: {} is not divisible by {}", err.dividend, err.divisor)),
+            }
+        })
+        .collect();
+    division_results
 }
 
 #[cfg(test)]
